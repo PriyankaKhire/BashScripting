@@ -41,7 +41,7 @@ compgen -v
 ```
 ### Arrays
 Declaring array
-```
+```bash
 stringArray=("cat" "dog" "mouse" "frog")
 intArray=(1 2 3 4 5 6 7 8 9) # Notice no comma,
 ```
