@@ -59,3 +59,54 @@ function myfunc {
   echo "Hello world"
 }
 ```
+### Arguments
+To call a function with arguments:
+```bash
+function_name "$arg1" "$arg2"
+```
+The function refers to passed arguments by their position (not by name), that is ```$1```, ```$2```, and so forth. ```$0``` is the name of the script itself.
+
+Also, you need to call your function after it is declared.
+```bash
+#!/usr/bin/env sh
+
+foo 1  # this will fail because foo has not been declared yet.
+
+foo() {
+    echo "Parameter #1 is $1"
+}
+
+foo 2 # this will work.
+```
+
+## Redirect
+Bash redirection is a way to control where the input to and output from commands and scripts go.
+- **Standard Input (stdin) Redirection (```<```):** This allows you to change where a command gets its input from.
+```bash
+command < input.txt
+```
+This command runs ```command``` and takes the contents of ```input.txt``` as input instead of waiting for input from the keyboard.
+
+- **Standard Output (stdout) Redirection (```>```):** This allows you to change where a command sends its output.
+```bash
+command > output.txt
+```
+This command runs ```command``` and saves its output to ```output.txt``` instead of displaying it on the terminal. If ```output.txt``` already exists, it will be overwritten.
+
+- **Appending Output (```>>```):** Similar to stdout redirection with ```>```, appending output with ```>>``` allows you to add command output to the end of an existing file instead of overwriting it.
+- **Standard Error (stderr) Redirection (```2>```):** In addition to stdout, commands can also produce error messages on stderr. Similar to stdout redirection, 2> allows you to redirect stderr to a file.
+- **Pipe (```|```) :** takes the standard output of one command and passes it as the input to another.
+```bash
+command1 | command2
+```
+This command runs command1 and sends its output to command2 as input. This can be chained indefinitely to create complex operations.
+
+
+
+
+
+
+# Good Reads
+- [Bash Array – How to Declare an Array of Strings in a Bash Script](https://www.freecodecamp.org/news/bash-array-how-to-declare-an-array-of-strings-in-a-bash-script/)
+- [Arguments in function](https://stackoverflow.com/questions/6212219/passing-parameters-to-a-bash-function)
+- [Advance Bash-Scripting Guide](https://tldp.org/LDP/abs/html/complexfunct.html)
